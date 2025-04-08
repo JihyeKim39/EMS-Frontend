@@ -90,3 +90,4 @@
 0:12:45 Microsoft.Shutdown.OnWindowClosing
 0:12:45 Microsoft.Shutdown.OnWindowClosingPostClearBrowsingData_NoBrowsingDataCleared
 0:12:45 Microsoft.Browser_Removed
+0:18:45 Microsoft.Shutdown.OnWindowClosing
