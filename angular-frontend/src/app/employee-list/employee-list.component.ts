@@ -2,11 +2,12 @@ import { Component, Injectable } from '@angular/core';
 import { Employee } from '../employee';
 import { CommonModule } from '@angular/common';
 import { EmployeeService } from '../employee.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-employee-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './employee-list.component.html',
   styleUrl: './employee-list.component.css',
 })
