@@ -7,6 +7,8 @@ import {
   withEventReplay,
 } from '@angular/platform-browser';
 import { provideHttpClient, withFetch } from '@angular/common/http';
+import { EmployeeListComponent } from './employee-list/employee-list.component';
+import { CreateEmployeeComponent } from './create-employee/create-employee.component';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -15,5 +17,7 @@ export const appConfig: ApplicationConfig = {
     provideClientHydration(withEventReplay()),
     provideHttpClient(),
     provideHttpClient(withFetch()),
+    EmployeeListComponent,
+    CreateEmployeeComponent,
   ],
 };

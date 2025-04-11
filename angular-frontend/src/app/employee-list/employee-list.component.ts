@@ -5,6 +5,7 @@ import { EmployeeService } from '../employee.service';
 
 @Component({
   selector: 'app-employee-list',
+  standalone: true,
   imports: [CommonModule],
   templateUrl: './employee-list.component.html',
   styleUrl: './employee-list.component.css',
