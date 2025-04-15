@@ -2,19 +2,26 @@ import { Component, Injectable } from '@angular/core';
 import { Employee } from '../employee';
 import { CommonModule } from '@angular/common';
 import { EmployeeService } from '../employee.service';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-employee-list',
   standalone: true,
   imports: [CommonModule, RouterModule],
   templateUrl: './employee-list.component.html',
-  styleUrl: './employee-list.component.css',
+  styleUrls: ['./employee-list.component.css'],
 })
 export class EmployeeListComponent {
+  updateEmployee(id: number) {
+    this.router.navigate(['update-employee', id]);
+    throw new Error('Method not implemented.');
+  }
   employees: Employee[] = [];
 
-  constructor(private employeeService: EmployeeService) {}
+  constructor(
+    private employeeService: EmployeeService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.getEmployees();

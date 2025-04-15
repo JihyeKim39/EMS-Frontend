@@ -9,5 +9,5 @@ import { EmployeeListComponent } from './employee-list/employee-list.component';
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  title = 'angular-frontend';
+  title = 'Angular 19 Spring Boot CRUD Full Stack App';
 }
