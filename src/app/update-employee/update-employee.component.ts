@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { EmployeeService } from '../employee.service';
 import { Employee } from '../employee';
 
@@ -14,7 +14,6 @@ import { Employee } from '../employee';
 export class UpdateEmployeeComponent implements OnInit {
   id!: number;
 
-  // ✅ Employee 타입에 맞게 id까지 포함해서 초기화
   employee: Employee = {
     id: 0,
     firstName: '',
@@ -24,10 +23,10 @@ export class UpdateEmployeeComponent implements OnInit {
 
   constructor(
     private employeeService: EmployeeService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
-  // 🔍 컴포넌트가 로딩될 때 employee 정보를 가져옴
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
     this.employeeService.getEmployeeById(this.id).subscribe((data) => {
@@ -35,10 +34,18 @@ export class UpdateEmployeeComponent implements OnInit {
     });
   }
 
-  // 💾 form 제출 처리
   onSubmit() {
-    console.log('Employee updated:', this.employee);
-    // 예: 서버에 업데이트 요청 보내기
-    // this.employeeService.updateEmployee(this.id, this.employee).subscribe(...)
+    // 서버에 업데이트 요청 보내기
+    this.employeeService
+      .updateEmployee(this.id, this.employee)
+      .subscribe((data) => {
+        this.goToEmployeeList();
+        console.log('Employee updated:', data);
+      });
+  }
+
+  // create-employee.component.ts에서 가져옴 [재사용]
+  goToEmployeeList() {
+    this.router.navigate(['/employees']); // router 사용
   }
 }

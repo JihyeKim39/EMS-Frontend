@@ -1,4 +1,4 @@
-import { Component, Injectable } from '@angular/core';
+import { Component } from '@angular/core';
 import { Employee } from '../employee';
 import { CommonModule } from '@angular/common';
 import { EmployeeService } from '../employee.service';
@@ -12,10 +12,6 @@ import { Router, RouterModule } from '@angular/router';
   styleUrls: ['./employee-list.component.css'],
 })
 export class EmployeeListComponent {
-  updateEmployee(id: number) {
-    this.router.navigate(['update-employee', id]);
-    throw new Error('Method not implemented.');
-  }
   employees: Employee[] = [];
 
   constructor(
@@ -26,9 +22,14 @@ export class EmployeeListComponent {
   ngOnInit(): void {
     this.getEmployees();
   }
+
   private getEmployees() {
     this.employeeService.getEmployeeList().subscribe((data) => {
       this.employees = data;
     });
+  }
+
+  updateEmployee(id: number) {
+    this.router.navigate(['update-employee', id]);
   }
 }

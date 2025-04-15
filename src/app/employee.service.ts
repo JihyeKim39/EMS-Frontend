@@ -7,16 +7,20 @@ import { Employee } from './employee';
   providedIn: 'root',
 })
 export class EmployeeService {
-  private baseURL = 'http://localhost:8081/api/v1/employees'; //기본 URL 정의(springboot 에서 만든 api 주소)
+  private baseURL = 'http://localhost:8081/api/v1/employees'; // 기본 URL 정의 (Spring Boot에서 만든 API 주소)
 
   constructor(private httpClient: HttpClient) {}
+
+  updateEmployee(id: number, employee: Employee): Observable<Employee> {
+    return this.httpClient.put<Employee>(`${this.baseURL}/${id}`, employee);
+  }
 
   getEmployeeList(): Observable<Employee[]> {
     return this.httpClient.get<Employee[]>(`${this.baseURL}`);
   }
 
-  createEmployee(employee: Employee): Observable<object> {
-    return this.httpClient.post(`${this.baseURL}`, employee);
+  createEmployee(employee: Employee): Observable<Employee> {
+    return this.httpClient.post<Employee>(`${this.baseURL}`, employee);
   }
 
   getEmployeeById(id: number): Observable<Employee> {
