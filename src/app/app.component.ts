@@ -11,5 +11,3 @@ import { EmployeeListComponent } from './employee-list/employee-list.component';
 export class AppComponent {
   title = 'angular-frontend';
 }
-
-// comment //
