@@ -1,7 +1,7 @@
-<div class="col-md-8 offset-md-2">
+<div class="container mt-4">
   <h2 class="mt-4 mb-5 text-center">Employee List</h2>
 
-  <div *ngIf="employees.length > 0; else noEmployees">
+  <div *ngIf="employees.length > 0; else noEmployees" class="table-responsive">
     <table class="table table-bordered table-striped shadow-sm bg-light">
       <thead class="table-dark text-center">
         <tr>
@@ -16,7 +16,7 @@
           <td>{{ employee.firstName }}</td>
           <td>{{ employee.lastName }}</td>
           <td>{{ employee.emailId }}</td>
-          <td class="d-flex justify-content-center gap-2">
+          <td class="d-flex justify-content-center gap-2 flex-wrap">
             <button
               (click)="updateEmployee(employee.id)"
               class="btn btn-outline-primary btn-sm"
