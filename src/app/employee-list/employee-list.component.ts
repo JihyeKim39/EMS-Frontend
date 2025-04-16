@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Employee } from '../employee';
 import { CommonModule } from '@angular/common';
 import { EmployeeService } from '../employee.service';
@@ -11,7 +11,7 @@ import { Router, RouterModule } from '@angular/router';
   templateUrl: './employee-list.component.html',
   styleUrls: ['./employee-list.component.css'],
 })
-export class EmployeeListComponent {
+export class EmployeeListComponent implements OnInit {
   employees: Employee[] = [];
 
   constructor(
@@ -32,6 +32,15 @@ export class EmployeeListComponent {
   updateEmployee(id: number) {
     this.router.navigate(['update-employee', id]);
   }
-}
 
-//test commit line //
+  deleteEmployee(id: number) {
+    this.employeeService.deleteEmployee(id).subscribe((data) => {
+      console.log(data);
+      this.getEmployees();
+    });
+  }
+
+  employeeDetails(id: number) {
+    this.router.navigate(['employee-details', id]);
+  }
+}

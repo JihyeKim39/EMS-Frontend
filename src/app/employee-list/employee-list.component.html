@@ -3,7 +3,7 @@
 
   <div *ngIf="employees.length > 0; else noEmployees">
     <table class="table table-bordered table-striped shadow-sm bg-light">
-      <thead class="table-dark">
+      <thead class="table-dark text-center">
         <tr>
           <th>First Name</th>
           <th>Last Name</th>
@@ -11,17 +11,32 @@
           <th>Actions</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody class="text-center">
         <tr *ngFor="let employee of employees">
           <td>{{ employee.firstName }}</td>
           <td>{{ employee.lastName }}</td>
           <td>{{ employee.emailId }}</td>
-          <td>
+          <td class="d-flex justify-content-center gap-2">
             <button
               (click)="updateEmployee(employee.id)"
-              class="btn btn-outline-dark btn-sm"
+              class="btn btn-outline-primary btn-sm"
+              style="min-width: 90px"
             >
               Update
+            </button>
+            <button
+              (click)="deleteEmployee(employee.id)"
+              class="btn btn-outline-danger btn-sm"
+              style="min-width: 90px"
+            >
+              Delete
+            </button>
+            <button
+              (click)="employeeDetails(employee.id)"
+              class="btn btn-outline-success btn-sm"
+              style="min-width: 90px"
+            >
+              View
             </button>
           </td>
         </tr>
